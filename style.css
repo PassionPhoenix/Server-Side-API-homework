@@ -1,0 +1,55 @@
+body{
+    margin: 0;
+}
+
+button{
+    margin: 8px;
+    padding: 2px;
+}
+
+main section{
+    background-color: cornflowerblue;
+}
+
+nav{
+    display: flex;
+    flex-direction: column;
+    float: left;
+    width: 20%;
+}
+
+section{
+    display: flex;
+    justify-content: space-around;
+    border: 1px solid black;
+    float: right;
+    width: 75%;
+}
+
+.day{
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+}
+
+main section section,
+.jumbotron{
+    display: flex;
+    flex-direction: column;
+}
+
+#Search{
+    background-color: cornflowerblue;
+}
+
+#Title{
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 300%;
+    background-color: crimson;
+}
+
+#line{
+    border: 1px solid black;
+}
+

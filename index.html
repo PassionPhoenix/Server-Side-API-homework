@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <script src="https://kit.fontawesome.com/ab052e7a37.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <h1 id="Title">Weather App</h1>
+    <nav>
+        <input type="text" class="form-control" id="State-search" placeholder="San Diego">
+        <button id="search">Search</button>
+        <p id="line"></p>
+        <button class="State">Austin</button>
+        <button class="State">Chicago</button>
+        <button class="State">Toronto</button>
+        <button class="State">Orlando</button>
+        <button class="State">Boston</button>
+        <button class="State">Seattle</button>
+        <button class="State">Denver</button>
+        <button class="State">Atlanta</button>
+    </nav>
+    <main>
+        <section class="jumbotron">
+            <h1 class="display-3" id="Current"></h1>
+            <h1 class="display-3 Where" id="Weather-station">State name</h1>
+            <h1 id="wonder"></h1>
+            <h3 id="TdTemp">Temp:</h3>
+            <h3 id="TdWind">Wind:</h3>
+            <h3 id="TdHumid">Humidity:</h3>
+            <h3 id="TdUV">UV Index:</h3>
+        </section>
+        <section class="Forecast">
+            <h3>5-day Forecast:</h3>
+        </section>
+        <section>
+            <p class="day" id="1day">1</p>
+            <p class="day" id="2day">2</p>
+            <p class="day" id="3day">3</p>
+            <p class="day" id="4day">4</p>
+            <p class="day" id="5day">5</p>
+        </section>
+        <section>
+            <section class="date" id="1">
+                <h1 id="Current1"></h1>
+                <h1 id="wonder1"></h1>
+                <h3 id="Temp1">Temp:</h3>
+                <h3 id="Wind1">Wind:</h3>
+                <h3 id="Humid1">Humidity:</h3>
+            </section>
+            <section class="date" id="2">
+                <h1 id="Current2"></h1>
+                <h1 id="wonder2"></h1>
+                <h3 id="Temp2">Temp:</h3>
+                <h3 id="Wind2">Wind:</h3>
+                <h3 id="Humid2">Humidity:</h3>
+            </section>
+            <section class="date" id="3">
+                <h1 id="Current3"></h1>
+                <h1 id="wonder3"></h1>
+                <h3 id="Temp3">Temp:</h3>
+                <h3 id="Wind3">Wind:</h3>
+                <h3 id="Humid3">Humidity:</h3>
+            </section>
+            <section class="date" id="4">
+                <h1 id="Current4"></h1>
+                <h1 id="wonder4"></h1>
+                <h3 id="Temp4">Temp:</h3>
+                <h3 id="Wind4">Wind:</h3>
+                <h3 id="Humid4">Humidity:</h3>
+            </section>
+            <section class="date" id="5">
+                <h1 id="Current5"></h1>
+                <h1 id="wonder5"></h1>
+                <h3 id="Temp5">Temp:</h3>
+                <h3 id="Wind5">Wind:</h3>
+                <h3 id="Humid5">Humidity:</h3>
+            </section>
+        </section>
+    </main>
+    
+</body>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"></script>
+<script src="./script.js"></script>
+</html>
