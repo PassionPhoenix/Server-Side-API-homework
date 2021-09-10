@@ -7,13 +7,13 @@ var Day5 = moment().add(5, 'day');
 
 var PreButton = $('.State');
 var Jumbo = $('.Jumbotron');
-var where = $('.Where')
+var where = $('.Where');
 var Search = $('#State-search');
 var Content = $('#Weather-station');
 var TodayTemp = $('#TdTemp');
 var TodayWind = $('#TdWind');
 var TodayHumid = $('#TdHumid');
-var TodayUV = $('#TdUV')
+var TodayUV = $('#TdUV');
 
 function displayDate(){
     $('#Current').html(rightNow);
@@ -27,7 +27,7 @@ function displayDate(){
 function Weather(lat, lon){
     var statequery = 'https://api.openweathermap.org/data/2.5/onecall?';
     
-    statequery = statequery + 'lat=' + lat + '&lon='+ lon + '&exclude=minutely,hourly,alerts&appid=b16f1aea6c8a8adc1ebc2fd17697b89a'
+    statequery = statequery + 'lat=' + lat + '&lon='+ lon + '&exclude=minutely,hourly,alerts&appid=b16f1aea6c8a8adc1ebc2fd17697b89a';
 
     fetch(statequery)
         .then(function(response){
@@ -35,59 +35,55 @@ function Weather(lat, lon){
                 console.log('No');
             }
             else{
-            return response.json()
-            }
+            return response.json();
+            };
         })
         .then(function (locRes) {
-            var TrueTemp = Math.round((locRes.current.temp - 273.15) * 9/5 + 32)
-            var weather = locRes.current.weather[0].main
+            var TrueTemp = Math.round((locRes.current.temp - 273.15) * 9/5 + 32);
+            var weather = locRes.current.weather[0].main;
 
-            Icon(weather)
+            Icon(weather);
 
-            TodayTemp.text('Temp:' + TrueTemp + '°F')
-            TodayWind.text('Wind:' + locRes.current.wind_speed)
-            TodayHumid.text('Humidity:' + locRes.current.humidity)
-            TodayUV.text('UV Index:' + locRes.current.uvi)
-        })
+            TodayTemp.text('Temp:' + TrueTemp + '°F');
+            TodayWind.text('Wind:' + locRes.current.wind_speed);
+            TodayHumid.text('Humidity:' + locRes.current.humidity);
+            TodayUV.text('UV Index:' + locRes.current.uvi);
+        });
 
 };
 
 function Icon(weather){
    
     if(weather == 'Clouds'){
-        $('#wonder').removeClass('fas fa-sun fa-smog fa-snowflake fa-cloud0rain')
-        $('#wonder').addClass('fas fa-cloud-sun')
+        $('#wonder').removeClass('fas fa-sun fa-smog fa-snowflake fa-cloud0rain');
+        $('#wonder').addClass('fas fa-cloud-sun');
     }else if(weather == 'Clear'){
-        $('#wonder').removeClass('fas fa-cloud-sun fa-smog fa-snowflake fa-poo-storm')
-        $('#wonder').addClass('fas fa-sun')
-        console.log($('.fas'))
+        $('#wonder').removeClass('fas fa-cloud-sun fa-smog fa-snowflake fa-poo-storm');
+        $('#wonder').addClass('fas fa-sun');
     }else if(weather == 'Atmosphere'){
-        $('#wonder').removeClass('fas fa-cloud-sun fa-sun fa-snowflake fa-poo-storm')
-        $('#wonder').addClass('fas fa-smog')
-        console.log($('.fas'))
+        $('#wonder').removeClass('fas fa-cloud-sun fa-sun fa-snowflake fa-poo-storm');
+        $('#wonder').addClass('fas fa-smog');
     }else if(weather == 'Snow'){
-        $('#wonder').removeClass('fas fa-cloud-sun fa-smog fa-sun fa-poo-storm')
-        $('#wonder').addClass('fas fa-snowflake')
-        console.log($('.fas'))
+        $('#wonder').removeClass('fas fa-cloud-sun fa-smog fa-sun fa-poo-storm');
+        $('#wonder').addClass('fas fa-snowflake');
     }else if(weather == 'Rain' || weather == 'Drizzle' || weather == 'Thunderstorm' ){
-        $('#wonder').removeClass('fas fa-cloud-sun fa-sun fa-smog fa-snowflake')
-        $('#wonder').addClass('fas fa-poo-storm')
-        console.log($('.fas'))
+        $('#wonder').removeClass('fas fa-cloud-sun fa-sun fa-smog fa-snowflake');
+        $('#wonder').addClass('fas fa-poo-storm');
     }else{
         return;
-    }
-}
+    };
+};
 
 function Scout(Event){
     City = Event.currentTarget.textContent;
-    Daily(City)
-}
+    Daily(City);
+};
 
 function Daily(City){
-    $('.Where').text(City)
+    $('.Where').text(City);
 
-    MultiDay()
-}
+    MultiDay();
+};
 
 function MultiDay(){
     var Forecast = 'https://api.openweathermap.org/data/2.5/forecast?q=' + City + '&appid=b16f1aea6c8a8adc1ebc2fd17697b89a';
@@ -95,20 +91,20 @@ function MultiDay(){
     fetch(Forecast)
         .then(function(response){
             if(!response.ok){    
-                alert('No good')            
+                alert('No good');       
                 console.log('No');
-                return Austin()
+                return Austin();
             }
             else{
-            return response.json()
+            return response.json();
             }
         })
         .then(function (locRes) {
-            var lon = locRes.city.coord.lon
-            var lat = locRes.city.coord.lat
-            Weather(lat, lon)
+            var lon = locRes.city.coord.lon;
+            var lat = locRes.city.coord.lat;
+            Weather(lat, lon);
 
-            console.log(locRes)
+            console.log(locRes);
 
             for(i = 0; i < 5; i++){
                 var weather2 = locRes.list[i].weather[0].main;
@@ -161,45 +157,48 @@ function MultiDay(){
 };
 
 function NewCity(){
-    var Changes = $('#State-search').val()
+    $('.New').removeClass('Hide')
+    $('.New').addClass('Show')
+    var Changes = $('#State-search').val();
 
-    City = Changes
-    $('.Where').text(City)
+    City = Changes;
+    $('.Where').text(City);
 
-    MultiDay()
+    MultiDay();
 
-    $('#State-search').val('')
-}
+    $('#State-search').val('');
+    $('.New').html(City);
+};
 
 function Austin(){
     City = 'Austin';
-    Daily(City)
-}
+    Daily(City);
+};
 
 function prediction(weather2){
     if(weather2 == 'Clouds'){
-        notWeather = 'fas fa-sun fa-smog fa-snowflake fa-cloud0rain'
-        wethar = 'fas fa-cloud-sun'
+        notWeather = 'fas fa-sun fa-smog fa-snowflake fa-cloud0rain';
+        wethar = 'fas fa-cloud-sun';
     }else if(weather2 == 'Clear'){
-        notWeather = 'fas fa-cloud-sun fa-smog fa-snowflake fa-poo-storm'
-        wethar = 'fas fa-sun'
+        notWeather = 'fas fa-cloud-sun fa-smog fa-snowflake fa-poo-storm';
+        wethar = 'fas fa-sun';
     }else if(weather2 == 'Atmosphere'){
-        notWeather = 'fas fa-cloud-sun fa-sun fa-snowflake fa-poo-storm'
-        wethar = 'fas fa-smog'
+        notWeather = 'fas fa-cloud-sun fa-sun fa-snowflake fa-poo-storm';
+        wethar = 'fas fa-smog';
     }else if(weather2 == 'Snow'){
-        notWeather = 'fas fa-cloud-sun fa-smog fa-sun fa-poo-storm'
-        wethar = 'fas fa-snowflake'
+        notWeather = 'fas fa-cloud-sun fa-smog fa-sun fa-poo-storm';
+        wethar = 'fas fa-snowflake';
     }else if(weather2 == 'Rain' || weather == 'Drizzle' || weather == 'Thunderstorm' ){
-        notWeather = 'fas fa-cloud-sun fa-sun fa-smog fa-snowflake'
-        wethar = 'fas fa-poo-storm'
+        notWeather = 'fas fa-cloud-sun fa-sun fa-smog fa-snowflake';
+        wethar = 'fas fa-poo-storm';
     }else{
         return;
-    }
-}
+    };
+};
 
-Austin()
-MultiDay()
-$('#search').on('click', NewCity)
-PreButton.on('click', Scout)
+Austin();
+MultiDay();
+$('#search').on('click', NewCity);
+PreButton.on('click', Scout);
 
 setInterval(displayDate, 1000);
