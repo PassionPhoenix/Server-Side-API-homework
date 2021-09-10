@@ -38,6 +38,14 @@ main section section,
     flex-direction: column;
 }
 
+.Hide{
+    visibility: hidden;
+}
+
+.Show{
+    visibility: visible;
+}
+
 #Search{
     background-color: cornflowerblue;
 }
